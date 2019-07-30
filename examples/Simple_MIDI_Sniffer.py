@@ -52,8 +52,9 @@ while True:
 
         elif isinstance(msg, TimingClock):
             t1 = time.monotonic_ns()
-            tempo = (tempo + (1 / ((t1 - t0) * 24) * 60 * 1e9)) / 2 # simple running average
-            if (t1-t0) != 0: print("-- Tick: %03.1f BPM" % tempo)  # compared to previous tick
+            if (t1-t0) != 0:
+                tempo = (tempo + (1 / ((t1 - t0) * 24) * 60 * 1e9)) / 2 # simple running average
+                print("-- Tick: %03.1f BPM" % tempo)  # compared to previous tick
             t0 = time.monotonic_ns()
 
         elif isinstance(msg, ChannelPressure):
