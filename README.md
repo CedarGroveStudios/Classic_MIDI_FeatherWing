@@ -2,7 +2,7 @@
 
 ### _A classic MIDI interface FeatherWing with provisions for DIN-5 and TRS TypeB connectors_
 
-![Image of Module](https://github.com/CedarGroveStudios/Classic_MIDI_FeatherWing/blob/master/DSC05764a%20lores.jpg)
+![Image of Module](https://github.com/CedarGroveStudios/Classic_MIDI_FeatherWing/blob/master/photos/DSC05764a%20lores.jpg)
 
 The Classic MIDI FeatherWing interface is an Adafruit Feather-compatible module. Deriving its power from the host Feather's 3.3V power, the interface converts incoming and outgoing classic MIDI current-loop input and output to Feather UART (RX and TX) logic pins.
 
@@ -16,4 +16,6 @@ The Classic MIDI interface was tested with CircuitPython version 4.1.0 beta 1 an
 
 OSH Park project: https://oshpark.com/shared_projects/AyVkzfXM
 
-![Image of Module](https://github.com/CedarGroveStudios/Classic_MIDI_FeatherWing/blob/master/Classic%20MIDI%20FeatherWing%20glam.png)
+![FeatherWing Implementation Chart](https://github.com/CedarGroveStudios/Classic_MIDI_FeatherWing/blob/master/docs/FeatherWing_Impl_Chart.png)
+
+![Image of Module](https://github.com/CedarGroveStudios/Classic_MIDI_FeatherWing/blob/master/photos/Classic%20MIDI%20FeatherWing%20glam.png)
