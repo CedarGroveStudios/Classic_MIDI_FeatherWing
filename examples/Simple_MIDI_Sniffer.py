@@ -43,40 +43,42 @@ while True:
     if msg is not None:
         midi.send(msg)  # MIDI thru
         if isinstance(msg, NoteOn):
-            print("NoteOn : #%02d %s %5.3fHz" % (msg.note, note_lexo(msg.note), note_freq(msg.note)))
-            print("     vel   %03d     chan #%02d" %(msg.velocity, msg.channel + 1))
+            print("NoteOn:")
+            print("#%02d %s %5.3fHz" % (msg.note, note_lexo(msg.note), note_freq(msg.note)))
+            print(" vel %03d  chan #%02d" %(msg.velocity, msg.channel + 1))
 
         elif isinstance(msg, NoteOff):
-            print("NoteOff: #%02d %s %5.3fHz" % (msg.note, note_lexo(msg.note), note_freq(msg.note)))
-            print("     vel   %03d     chan #%02d" %(msg.velocity, msg.channel + 1))
+            print("NoteOff:")
+            print("#%02d %s %5.3fHz" % (msg.note, note_lexo(msg.note), note_freq(msg.note)))
+            print(" vel %03d  chan #%02d" %(msg.velocity, msg.channel + 1))
 
         elif isinstance(msg, TimingClock):
             t1 = time.monotonic_ns()
             if (t1-t0) != 0:
                 tempo = (tempo + (1 / ((t1 - t0) * 24) * 60 * 1e9)) / 2 # simple running average
-                print("-- Tick: %03.1f BPM" % tempo)  # compared to previous tick
+                print("-Tick: %03.1f BPM" % tempo)  # compared to previous tick
             t0 = time.monotonic_ns()
 
         elif isinstance(msg, ChannelPressure):
             print("ChannelPressure: ")
-            print("     press %03d     chan #%02d" %(msg.pressure, msg.channel + 1))
+            print(" press %03d  chan #%02d" %(msg.pressure, msg.channel + 1))
 
         elif isinstance(msg, ControlChange):
             print("ControlChange: ctrl #%03d  %s" % (msg.control, cc_decoder(msg.control)))
-            print("     value %03d     chan #%02d" %(msg.value, msg.channel + 1))
+            print(" value %03d  chan #%02d" %(msg.value, msg.channel + 1))
 
         elif isinstance(msg, PitchBend):
             print("PitchBend: ")
-            print("     bend  %05d   chan #%02d" %(msg.pitch_bend, msg.channel + 1))
+            print(" bend %05d  chan #%02d" %(msg.pitch_bend, msg.channel + 1))
 
         elif isinstance(msg, PolyphonicKeyPressure):
             print("PolyphonicKeyPressure:")
-            print("          #%02d %s %5.3fHz" % (msg.note, note_lexo(msg.note), note_freq(msg.note)))
-            print("     press %03d     chan #%02d" %(msg.pressure, msg.channel + 1))
+            print(" #%02d %s %5.3fHz" % (msg.note, note_lexo(msg.note), note_freq(msg.note)))
+            print(" press %03d  chan #%02d" %(msg.pressure, msg.channel + 1))
 
         elif isinstance(msg, ProgramChange):
             print("ProgramChange:")
-            print("     patch %03d     chan #%02d" %(msg.patch, msg.channel + 1))
+            print(" patch %03d  chan #%02d" %(msg.patch, msg.channel + 1))
 
         elif isinstance(msg, (Start, Stop)): print("-- %s --" % str(type(msg))[8:-2])
 
