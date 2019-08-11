@@ -25,7 +25,7 @@ from adafruit_midi.midi_message            import MIDIUnknownEvent
 
 from cedargrove_MIDI_util                  import *
 
-UART = busio.UART(board.TX, board.RX, baudrate=31250, timeout=0.001)
+UART = busio.UART(board.SDA, board.SCL, baudrate=31250, timeout=0.001)
 midi = adafruit_midi.MIDI(midi_in=UART, midi_out=UART, in_channel=0, out_channel=0)
 # 0 is MIDI channel 1
 
@@ -33,6 +33,7 @@ print("Simple_MIDI_Sniffer.py 2019-08-10 CedarGrove")
 # Convert channel numbers at the presentation layer to the ones musicians use
 print("Input channel:", midi.in_channel + 1 )
 
+midi_thru = False  # True to enable MIDI Thru
 tempo_show = False  # True to enable tempo calculation
 t0 = time.monotonic_ns()
 tempo = 0
@@ -42,7 +43,8 @@ while True:
     msg = midi.receive()
 
     if msg is not None:
-        midi.send(msg)  # MIDI thru
+        if midi_thru:
+            midi.send(msg)  # MIDI thru
         if isinstance(msg, NoteOn):
             print("NoteOn:")
             print("#%02d %s %5.3fHz" % (msg.note, note_lexo(msg.note), note_freq(msg.note)))
