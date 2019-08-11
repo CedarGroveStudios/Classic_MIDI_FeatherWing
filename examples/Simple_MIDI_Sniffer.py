@@ -25,7 +25,7 @@ from adafruit_midi.midi_message            import MIDIUnknownEvent
 
 from cedargrove_MIDI_util                  import *
 
-UART = busio.UART(board.SDA, board.SCL, baudrate=31250, timeout=0.001)
+UART = busio.UART(board.TX, board.RX, baudrate=31250, timeout=0.001)
 midi = adafruit_midi.MIDI(midi_in=UART, midi_out=UART, in_channel=0, out_channel=0)
 # 0 is MIDI channel 1
 
