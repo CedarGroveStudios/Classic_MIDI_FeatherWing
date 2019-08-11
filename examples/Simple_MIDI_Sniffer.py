@@ -1,6 +1,6 @@
 # Simple_MIDI_Sniffer.py
 # for Classic MIDI FeatherWing
-# 2019-07-16 Cedar Grove Studios
+# 2019-08-10 Cedar Grove Studios
 # based upon @kevinjwalter's adafruit_midi library and examples
 #
 
@@ -29,10 +29,11 @@ UART = busio.UART(board.TX, board.RX, baudrate=31250, timeout=0.001)
 midi = adafruit_midi.MIDI(midi_in=UART, midi_out=UART, in_channel=0, out_channel=0)
 # 0 is MIDI channel 1
 
-print("Simple_MIDI_Sniffer.py 2019-07-16 CedarGrove")
+print("Simple_MIDI_Sniffer.py 2019-08-10 CedarGrove")
 # Convert channel numbers at the presentation layer to the ones musicians use
 print("Input channel:", midi.in_channel + 1 )
 
+tempo_show = False  # True to enable tempo calculation
 t0 = time.monotonic_ns()
 tempo = 0
 
@@ -53,11 +54,13 @@ while True:
             print(" vel %03d  chan #%02d" %(msg.velocity, msg.channel + 1))
 
         elif isinstance(msg, TimingClock):
-            t1 = time.monotonic_ns()
-            if (t1-t0) != 0:
-                tempo = (tempo + (1 / ((t1 - t0) * 24) * 60 * 1e9)) / 2 # simple running average
-                print("-Tick: %03.1f BPM" % tempo)  # compared to previous tick
-            t0 = time.monotonic_ns()
+            if tempo_show:
+                t1 = time.monotonic_ns()
+                if (t1-t0) != 0:
+                    tempo = (tempo + (1 / ((t1 - t0) * 24) * 60 * 1e9)) / 2 # simple running average
+                    print("-Tick: %03.1f BPM" % tempo)  # compared to previous tick
+                t0 = time.monotonic_ns()
+            else: print("-Tick")  # compared to previous tick
 
         elif isinstance(msg, ChannelPressure):
             print("ChannelPressure: ")
