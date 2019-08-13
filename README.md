@@ -14,7 +14,7 @@ DIN-5 MIDI jack used: https://www.adafruit.com/product/1134
 
 The Classic MIDI interface was tested with CircuitPython version 4.1.0 beta 1 and earlier releases. Example code is provided in the repository. Additional code examples can be found within the _adafruit__midi_ CircuitPython examples distribution.
 
-OSH Park project: https://oshpark.com/shared_projects/AyVkzfXM
+OSH Park project: https://oshpark.com/shared_projects/SzjsJUV0
 
 ![FeatherWing Implementation Chart](https://github.com/CedarGroveStudios/Classic_MIDI_FeatherWing/blob/master/docs/FeatherWing_Impl_Chart.png)
 
