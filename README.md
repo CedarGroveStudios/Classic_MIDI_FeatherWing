@@ -18,4 +18,5 @@ OSH Park project: https://oshpark.com/shared_projects/SzjsJUV0
 
 ![FeatherWing Implementation Chart](https://github.com/CedarGroveStudios/Classic_MIDI_FeatherWing/blob/master/docs/FeatherWing_Impl_Chart.png)
 
+
 ![Image of Module](https://github.com/CedarGroveStudios/Classic_MIDI_FeatherWing/blob/master/photos/Classic%20MIDI%20FeatherWing%20glam.png)
