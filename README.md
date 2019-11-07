@@ -8,6 +8,8 @@ The Classic MIDI FeatherWing interface is an Adafruit Feather-compatible module.
 
 The wing provides on-board input and output footprints for 3.5mm TRS Type B and DIN-5 connectors while maintaining the Feather dimensional format, thanks to John Park's inspirational _Feather MIDI Nub_ design (Twitter: @johnedgarpark). The MIDI input is an optically-isolated connection. MIDI output is buffered and current-limited. On-board receive (RX) and transmit (TX) LEDs indicate incoming and outgoing signals.
 
+To use the wing as a standalone MIDI interface, see the UART-STEMMA MIDI Backpack project: https://github.com/CedarGroveStudios/UART-STEMMA_MIDI_Backpack
+
 DIN-5 MIDI jack used: https://www.adafruit.com/product/1134
 
 3.5mm TRS MIDI jack used: https://www.adafruit.com/product/1699
